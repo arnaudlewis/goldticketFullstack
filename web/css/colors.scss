@@ -1,0 +1,19 @@
+$home_element_wallpaper_light : #fff;
+$home_element_wallpaper_dark : #333;
+
+$home_layer_background_light : rgba(255, 255, 255, 0.5);
+$home_layer_background_dark : rgba(43, 43, 43, 0.75);
+
+$home_dark_color: $home_layer_background_dark;
+$home_light_color: rgba(244, 244, 244, 0.8);
+$home_element_title_color: #f94d4d;
+
+$repositories_head_title_color: $home_element_title_color;
+$repositories_head_form_advance_settings: #f0ad4e;
+$repositories_head_form_advance_settings_icon: white;
+$repositories_head_form_error_msg: #f94d4d;
+$repositories_repository_separator_light: 1px solid rgb(229, 226, 226);
+
+$repository_navigator_delimiter: $repositories_repository_separator_light;
+
+$analytics_graph_title : $home_element_title_color;
