@@ -20,35 +20,16 @@ var RepositoryAction = {
     loadRepositoryByName: function (ownerName, repositoryName) {
         "use strict";
         commitsCounter = 0;
-        var repoPath = BrowseConst.GITHUB_API_PATH + '/repos/' + ownerName + '/' + repositoryName;
-        var commitsPath = repoPath + '/commits';
-        var committersPath = repoPath + '/contributors';
-        $.when(
-            $.ajax({
-                url: repoPath,
-                type: 'GET',
-                contentType: 'application/json; charset=utf-8'
-            }),
-
-            $.ajax({
-                url: commitsPath,
-                type: 'GET',
-                data: {per_page: BrowseConst.COMMITS_MAX},
-                contentType: 'application/json; charset=utf-8'
-            }),
-
-            $.ajax({
-                url: committersPath,
-                type: 'GET',
-                contentType: 'application/json; charset=utf-8'
-            })
-        )
-
-            .done(function (repoCallback, commitsCallback, committersCallback) {
-                var repository = buildResponse(repoCallback[0], commitsCallback[0], committersCallback[0]);
+        var repoPath = BrowseConst.SERVER_API_PATH + '/owner/' + ownerName + '/repository/' + repositoryName;
+        $.ajax({
+            url: repoPath,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8'
+        })
+            .done(function (data, textStatus, xhr) {
                 AppDispatcher.dispatch({
                     actionType: Constants.LOAD_REPOSITORY_BY_NAME,
-                    data: repository
+                    data: data
                 });
             })
             .fail(function (xhr, textStatus, error) {

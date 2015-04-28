@@ -76,8 +76,9 @@ var RepositoriesAction = {
     loadNewPageFromApi: function (form, filter, page) {
         "use strict";
         var data = buildQueryParams(form, filter, page);
+        var repositoriesPath = BrowseConst.SERVER_API_PATH + "/repositories";
         $.ajax({
-            url: BrowseConst.SERVER_API_PATH,
+            url: repositoriesPath,
             type: 'GET',
             page: data.page,
             validForm: form,
